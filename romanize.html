@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+       <meta charset = "UTF-8">
+       <title>Romanize</title>
+
+       <script type="text/javascript">
+
+               window.onload = function(){
+
+              function romanize(extNum){  
+
+
+                       var num = extNum;
+
+
+                       var romanArray = [];
+                   
+                       var romanNumeral = "";
+
+                       var remainder = undefined;      
+                     
+                       var roman = {
+                          //K: 5000, hypothetical roman numeral
+                          M: 1000,
+                          D: 500,
+                          C: 100,
+                          L: 50,
+                          X: 10,
+                          V: 5,
+                          I: 1
+
+                       }
+
+
+                       function f(num){
+                       
+                        for (prop in roman){
+
+                          romanArray.push(prop);
+
+
+
+                          var romanNumber = Math.floor(num/roman[prop]);
+                         
+                          if (romanNumber > 0  ){
+                            
+
+
+                            if(remainder != 0){
+
+                               
+                           
+                              for (var i =0;i < romanNumber; i++){
+
+                                 if(romanNumber > 3 ){
+
+                                        if(!romanNumeral){
+
+                                            var firstNum =1;
+
+
+                                   }else{
+                                          var lastNumeral = romanNumeral.charAt(romanNumeral.length-1);
+                                          
+                                         var firstNum = roman[lastNumeral].toString().charAt(0);
+                                                                   
+                                      }
+                                  
+                                          if(firstNum == 5 && roman[lastNumeral]/roman[prop] <= 10){
+
+
+                                               romanNumeral = romanNumeral.slice(0, -1)
+
+                                               romanNumeral += prop + romanArray[romanArray.length - 3];
+                                               break;
+
+                                            } else {
+
+                                                
+
+                                                romanNumeral += prop + romanArray[romanArray.length - 2]; 
+                                                break; 
+
+                                         }
+
+                                 
+                                 
+                                 }else{
+                                  romanNumeral += prop;
+                                }
+                              }
+
+                            remainder = num%roman[prop];
+
+
+
+                            f(remainder);
+                            break;
+
+                            }
+
+                          }
+                        
+
+                        }
+                        return romanNumeral;
+
+                       }
+
+
+                       return f(num);
+
+
+                     }
+
+                                
+                      console.log( romanize(99));
+                               
+                            
+
+
+
+               }
+
+                       
+
+       </script>
+
+
+</head>
+<body >
+       <canvas id="myCanvas" width = "600" height="600" ></canvas>
+
+</body>
+</html>
+					
+	
