@@ -7,9 +7,16 @@
 
        <script type="text/javascript">
 
-               window.onload = function(){
 
-              function romanize(extNum){  
+
+           
+
+
+
+              function romanize(extNum){ 
+
+                      
+                     
 
 
                        var num = extNum;
@@ -115,25 +122,86 @@
 
                      }
 
-                                
-                      console.log( romanize(144));
-                               
-                            
 
+ function getNumber(){
 
+          var inputNumber = document.getElementById("inputNumber").value; 
+                      
+           return inputNumber;
+}                               
+    
 
-               }
+ function convert(){ 
 
-                       
+    var numbervalue = getNumber();
+    var convertedValue = romanize(numbervalue);
+
+    var output = document.getElementById("output");
+    output.innerHTML = convertedValue;
+
+  
+    
+}
+
+window.onload=function(){
+
+convert();
+
+}
+
+             
 
        </script>
 
 
+       <style type="text/css">
+   
+
+
+        table {
+            border:solid 1px gray;
+            padding:10px;
+            background-color:#EDEDED;
+
+        }
+          h3, th {
+            color: gray;
+            text-align:left;
+
+          }
+
+          body{
+            font-family:arial;
+
+          }
+          td {
+            border:none;
+            padding:10px 30px 10px 0px;
+            text-align:left;
+
+          }
+          .rmBorder {
+
+            border:none;
+          }
+
+
+       </style>
+
+
 </head>
 <body >
-       <canvas id="myCanvas" width = "600" height="600" ></canvas>
+  <div style = "margin:auto; width:400px;">
+       <h3>Romanize</h3>
+
+      <table >
+        <tr><th >Enter Number</th><th>Roman Numeral</th></tr>
+        <tr><td ><input id = "inputNumber" value ="100" style = "width:100px;"></input></td><td><span id ="output">numeral</span></td></tr>
+        <tr><td class = "rmBorder"><button onclick = "convert();">convert</button></td></tr>
+      </table></div>
+
 
 </body>
 </html>
-					
-	
+          
+  
